@@ -1,6 +1,6 @@
 # DBLP-coauthor
 
-This project is intended to suggest a method to mine a set of coauthor relationships from the mammoth DBLP dataset which can be found on https://dblp.uni-trier.de/xml/
+This notebook is intended to suggest a method to mine a set of coauthor relationships from the mammoth DBLP dataset which can be found on https://dblp.uni-trier.de/xml/
 
 The aim is to answer the question 'Which authors collaborate with each other the most?'
 
