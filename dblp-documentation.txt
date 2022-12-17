@@ -1,0 +1,35 @@
+1. The first thing I did was to understand the Association Rules, Apriori algorithm and how it works behind the scenes.
+	The following resources helped me understand Association Rules
+ 		+ This LinkedIn article : https://www.linkedin.com/feed/update/urn:li:activity:6864994379627683840/
+		+ This YouTube video : https://www.youtube.com/watch?v=guVvtZ7ZClw
+	Then these videos guided me on how to apply the algorithm with Pyhton in a Jupyter notebook
+		+ https://www.youtube.com/watch?v=0yaYwDyBxFA&list=PL9-4fHQAYptDc2DS1B8x4Z4sw_EtwhSWW&index=38
+		+ https://www.youtube.com/watch?v=bzz4BL36v8I&list=PL9-4fHQAYptDc2DS1B8x4Z4sw_EtwhSWW&index=41
+2. I downloaded the dataset from https://dblp.uni-trier.de/xml/ and tried everything for days to parse it to json or csv but I didn't succeed.
+	I used the following github repositories:
+	+ https://github.com/angelosalatino/dblp-parser
+	+ https://github.com/ThomHurks/dblp-to-csv
+3. I gave up, downloaded a chunk of the dataset from https://data.world/pulkit-jain/dblp-acm/workspace/file?filename=DBLP2.csv
+4. Tried to import the dataset into pandas but got an error "'utf-8' codec can't decode byte 0xed in position 14: invalid continuation byte"
+5. I set the encoding from the line to read the file as latin-1 and it worked but returned a warning thus 
+	"DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and 
+	any exception that happen during the transform in `preprocessing_exc_tuple` in IPython 7.17 and above. and should_run_async(code)"
+6. I googled the warning and discovered it is because some libraries might not be up to date.
+	One of those could be ipykernel. I had two options a) surpress the warnings b) upgrade ipykernel and see
+7. I choose the 2nd option and started upgrading ipykernel.
+7. I thought to myself "Why not convert the file from whatever encoding it is to utf-8 because, what if I encounter problems working with the file because of
+	the encoding?" So the first step was to check how the file is encoded
+8. The code to check it is 
+		import chardet
+		# look at the first ten thousand bytes to guess the character encoding
+		with open("C:/Users/Equan/Downloads/DBLP2.csv", 'rb') as rawdata:
+    			result = chardet.detect(rawdata.read(10000))
+    
+		# check what the character encoding might be
+		print(result)
+The result is
+	{'encoding': 'ISO-8859-1', 'confidence': 0.7282541851725316, 'language': ''}
+Lo and behold, ISO-8859-1  encoding is the same with latin-1
+9. But for some reason I can't remember I choose not to change the encoding in the end
+10. The warnings went away after upgrading ipykernel
+11. Down to the coding in the notebook
