@@ -9,27 +9,29 @@
 	I used the following github repositories:
 	+ https://github.com/angelosalatino/dblp-parser
 	+ https://github.com/ThomHurks/dblp-to-csv
-3. I gave up, downloaded a chunk of the dataset from https://data.world/pulkit-jain/dblp-acm/workspace/file?filename=DBLP2.csv
+3. Then I decided to downloaded a chunk of the dataset instead from https://data.world/pulkit-jain/dblp-acm/workspace/file?filename=DBLP2.csv
 4. Tried to import the dataset into pandas but got an error "'utf-8' codec can't decode byte 0xed in position 14: invalid continuation byte"
 5. I set the encoding from the line to read the file as latin-1 and it worked but returned a warning thus 
 	"DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and 
 	any exception that happen during the transform in `preprocessing_exc_tuple` in IPython 7.17 and above. and should_run_async(code)"
 6. I googled the warning and discovered it is because some libraries might not be up to date.
-	One of those could be ipykernel. I had two options a) surpress the warnings b) upgrade ipykernel and see
-7. I choose the 2nd option and started upgrading ipykernel.
+	One of those could be ipykernel. I had two options:
+		a) surpress the warnings 
+		b) upgrade ipykernel and see
+7. I choose the 2nd option and upgraded ipykernel.
 7. I thought to myself "Why not convert the file from whatever encoding it is to utf-8 because, what if I encounter problems working with the file because of
 	the encoding?" So the first step was to check how the file is encoded
 8. The code to check it is 
 		import chardet
 		# look at the first ten thousand bytes to guess the character encoding
-		with open("C:/Users/Equan/Downloads/DBLP2.csv", 'rb') as rawdata:
+		with open("DBLP2.csv", 'rb') as rawdata:
     			result = chardet.detect(rawdata.read(10000))
     
 		# check what the character encoding might be
 		print(result)
-The result is
+	The result was
 	{'encoding': 'ISO-8859-1', 'confidence': 0.7282541851725316, 'language': ''}
-Lo and behold, ISO-8859-1  encoding is the same with latin-1
+	Lo and behold, ISO-8859-1  encoding is the same with latin-1
 9. But for some reason I can't remember I choose not to change the encoding in the end
 10. The warnings went away after upgrading ipykernel
 11. Down to the coding in the notebook
