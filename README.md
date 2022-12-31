@@ -4,5 +4,5 @@ This notebook is intended to suggest a method to mine a set of coauthor relation
 
 The aim is to answer the question 'Which authors collaborate with each other the most?'
 
-I did not use the original dataset, as I couldn't successfully parse the xml file to user-friendly json or csv. So I used a chunk of the dataset from https://data.world/pulkit-jain/dblp-acm/workspace/file?filename=DBLP2.csv
-I used Association Rule for Data Mining and the algorithm used is Apriori algorithm.
+I did not use the original dataset, as I couldn't successfully parse the xml file to user-friendly json or csv. So I used a chunk of the dataset from https://data.world/pulkit-jain/dblp-acm/workspace/file?filename=DBLP2.csv.
+Association Rule for Data Mining was the method employed, and the Apriori algorithm was used to find frequent item sets.
